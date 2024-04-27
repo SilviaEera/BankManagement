@@ -323,10 +323,16 @@ public class SignupOne extends JFrame implements ActionListener{
                else if(dateOfBirth.equals("")){
                 JOptionPane.showMessageDialog(null, "Please Enter Date Of Birth.");
             } else{
+                   
                    Conn c = new Conn();
                    String query = "insert into signup Values('"+formNum+"' , '"+name+"' , '"+fatherName+"', '"+motherName+"', '"+email+"', '"+address+"', '"+pin+"', '"+state+"', '"+city+"', '"+dateOfBirth+"', '"+gender+"', '"+maritalStat+"')";
                    c.s.executeUpdate(query);
+                           
+                           setVisible(false);
+            new SignupTwo(formNum).setVisible(true);
                }
+            
+            
             
         } catch ( Exception e){
             System.out.println(e);

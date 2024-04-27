@@ -21,13 +21,16 @@ import java.awt.event.ActionListener;
 public class SignupTwo extends JFrame implements ActionListener {
 //    long randFormNum;
 
-    JTextField categoryfld, incomefld, qualificationfld, occupationfld, agefld, contactfld, bloodgrpfld, nationalityfld;
+    JTextField edufld, incomefld, occupationfld, agefld, contactfld, nationalityfld;
     JButton nxt;
-    JComboBox religionfld, accountfld;
+    JComboBox religionfld, accountfld, bloodgrpfld, qualificationfld;
     JRadioButton unMarried, married, yes, no;
     JDateChooser dateChooser;
+    String formNum;
 
-    SignupTwo() {
+    SignupTwo(String formNum) {
+        this.formNum = formNum;
+        System.out.println(formNum);
         //additional details
         JLabel additionalDetails = new JLabel("Page 2 : Additional Details");
         additionalDetails.setFont(new Font("Raleway", Font.BOLD, 30));
@@ -50,41 +53,35 @@ public class SignupTwo extends JFrame implements ActionListener {
         religionfld = new JComboBox(relArr);
         religionfld.setBackground(Color.white);
 
-//        religionfld = new JTextField();
         religionfld.setBounds(230, 160, 500, 30);
         add(religionfld);
+        
+        
+        JLabel edu = new JLabel("EDUCATION: ");
+        edu.setFont(new Font("Raleway", Font.BOLD, 16));
+        edu.setBounds(40, 210, 250, 40);
+        add(edu);
 
-//        religionfld.setBorder(BorderFactory.createCompoundBorder(
-//                religionfld.getBorder(),
-//                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        edufld = new JTextField();
+        edufld.setBounds(230, 210, 500, 30);
+        add(edufld);
 
-        //category
-        JLabel category = new JLabel("EDUCATION: ");
-        category.setFont(new Font("Raleway", Font.BOLD, 16));
-        category.setBounds(40, 210, 250, 40);
-        add(category);
-
-        categoryfld = new JTextField();
-        categoryfld.setBounds(230, 210, 500, 30);
-        add(categoryfld);
-
-        categoryfld.setBorder(BorderFactory.createCompoundBorder(
-                categoryfld.getBorder(),
+        edufld.setBorder(BorderFactory.createCompoundBorder(
+                edufld.getBorder(),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         //income
-        JLabel income = new JLabel("QUALIFICATION: ");
-        income.setFont(new Font("Raleway", Font.BOLD, 16));
-        income.setBounds(40, 260, 250, 40);
-        add(income);
+        JLabel qualification = new JLabel("QUALIFICATION: ");
+        qualification.setFont(new Font("Raleway", Font.BOLD, 16));
+        qualification.setBounds(40, 260, 250, 40);
+        add(qualification);
 
-        incomefld = new JTextField();
-        incomefld.setBounds(230, 260, 500, 30);
-        add(incomefld);
+        String qualificArr[] = {"None", "SSC", "HSC", "BSc", "MS", "PHD"};
+        qualificationfld = new JComboBox(qualificArr);
+        qualificationfld.setBackground(Color.white);
+        qualificationfld.setBounds(230, 260, 500, 30);
+        add(qualificationfld);
 
-        incomefld.setBorder(BorderFactory.createCompoundBorder(
-                incomefld.getBorder(),
-                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         //date of birth
         JLabel occupation = new JLabel("OCCUPATION: ");
@@ -100,10 +97,10 @@ public class SignupTwo extends JFrame implements ActionListener {
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         //gender
-        JLabel education = new JLabel("EXISTING ACCOUNT: ");
-        education.setFont(new Font("Raleway", Font.BOLD, 16));
-        education.setBounds(40, 340, 250, 40);
-        add(education);
+        JLabel existingAcc = new JLabel("EXISTING ACCOUNT: ");
+        existingAcc.setFont(new Font("Raleway", Font.BOLD, 16));
+        existingAcc.setBounds(40, 340, 250, 40);
+        add(existingAcc);
 
         yes = new JRadioButton("YES");
         yes.setBackground(Color.white);
@@ -122,17 +119,17 @@ public class SignupTwo extends JFrame implements ActionListener {
         existAccGroup.add(no);
 
         //email
-        JLabel qualification = new JLabel("INCOME: ");
-        qualification.setFont(new Font("Raleway", Font.BOLD, 16));
-        qualification.setBounds(40, 380, 250, 40);
-        add(qualification);
+        JLabel income = new JLabel("INCOME: ");
+        income .setFont(new Font("Raleway", Font.BOLD, 16));
+        income .setBounds(40, 380, 250, 40);
+        add(income );
 
-        qualificationfld = new JTextField();
-        qualificationfld.setBounds(230, 380, 500, 30);
-        add(qualificationfld);
+        incomefld = new JTextField();
+        incomefld.setBounds(230, 380, 500, 30);
+        add(incomefld);
 
-        qualificationfld.setBorder(BorderFactory.createCompoundBorder(
-                qualificationfld.getBorder(),
+        incomefld.setBorder(BorderFactory.createCompoundBorder(
+                incomefld.getBorder(),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         //Marital Status
@@ -149,7 +146,7 @@ public class SignupTwo extends JFrame implements ActionListener {
                 agefld.getBorder(),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
-        //address
+        // account type
         JLabel account = new JLabel("ACCOUNT TYPE: ");
         account.setFont(new Font("Raleway", Font.BOLD, 16));
         account.setBounds(40, 460, 250, 40);
@@ -160,12 +157,8 @@ public class SignupTwo extends JFrame implements ActionListener {
         accountfld.setBackground(Color.white);
         accountfld.setBounds(230, 460, 500, 30);
         add(accountfld);
-
-//        accountfld.setBorder(BorderFactory.createCompoundBorder(
-//                accountfld.getBorder(),
-//                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-
-        //city
+        
+        //nationality
         JLabel nationality = new JLabel("NATIONALITY: ");
         nationality.setFont(new Font("Raleway", Font.BOLD, 16));
         nationality.setBounds(40, 500, 250, 40);
@@ -175,6 +168,7 @@ public class SignupTwo extends JFrame implements ActionListener {
         nationalityfld.setBounds(230, 500, 500, 30);
         add(nationalityfld);
 
+        
         nationalityfld.setBorder(BorderFactory.createCompoundBorder(
                 nationalityfld.getBorder(),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
@@ -184,14 +178,14 @@ public class SignupTwo extends JFrame implements ActionListener {
         bloodgrp.setFont(new Font("Raleway", Font.BOLD, 16));
         bloodgrp.setBounds(40, 540, 250, 30);
         add(bloodgrp);
-
-        bloodgrpfld = new JTextField();
+        
+//        String [] = {};
+        String bloodgrpArr[] = {"O+", "O-","A+", "A-", "B+", "B-" , "AB+", "AB-",};
+        bloodgrpfld = new JComboBox(bloodgrpArr);
         bloodgrpfld.setBounds(230, 540, 500, 30);
+        bloodgrpfld.setBackground(Color.white);
         add(bloodgrpfld);
 
-        bloodgrpfld.setBorder(BorderFactory.createCompoundBorder(
-                bloodgrpfld.getBorder(),
-                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         //pin 
         JLabel contact = new JLabel("CONTACT: ");
@@ -228,18 +222,17 @@ public class SignupTwo extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-//        String formNum = ""+randFormNum;
-        String religion = String.valueOf(religionfld.getSelectedItem()); //getText() used to get the value from the textfields
-        String category = categoryfld.getText();
+        String formNo = ""+ formNum;
+        String religion = String.valueOf(religionfld.getSelectedItem());
+        String education = edufld.getText();
         String income = incomefld.getText();
-        String qualification = qualificationfld.getText();
+        String qualification = String.valueOf(qualificationfld.getSelectedItem());
         String occupation = occupationfld.getText();
         String age = agefld.getText();
         String contact = contactfld.getText();
         String acc = String.valueOf(accountfld.getSelectedItem());
-        String bloodGrp = bloodgrpfld.getText();
+        String bloodGrp = String.valueOf(bloodgrpfld.getSelectedItem());
         String nationality = nationalityfld.getText();
-//        String dateOfBirth = ((JTextField)dateChooser.getDateEditor().getUiComponent()).getText();
         String accHave = null;
         if (yes.isSelected()) {
             accHave = "Yes";
@@ -250,10 +243,12 @@ public class SignupTwo extends JFrame implements ActionListener {
         try {
             if (religion.equals("")) {
                 JOptionPane.showMessageDialog(null, "Please Enter Religion.");
-            } else if (category.equals("")) {
-                JOptionPane.showMessageDialog(null, "Please Enter Category.");
-            } else if (income.equals("")) {
-                JOptionPane.showMessageDialog(null, "Please Enter income.");
+            } else if(accHave.equals("")){
+                JOptionPane.showMessageDialog(null, "Please enter if you have an exusting account or not");
+            } else if (education.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please Enter education.");
+            } else if(acc.equals("")){
+             JOptionPane.showMessageDialog(null, "Select Account Type");
             } else if (qualification.equals("")) {
                 JOptionPane.showMessageDialog(null, "Please Enter qualification ");
             } else if (occupation.equals("")) {
@@ -269,7 +264,7 @@ public class SignupTwo extends JFrame implements ActionListener {
             }
             else {
                 Conn c = new Conn();
-                String query = "insert into signup Values( '" + religion + "' , '" + category + "', '" + income + "', '" + occupation + "', '" + age + "', '" + qualification + "','" + acc + "' , '" + bloodGrp + "', '" + nationality + "','"+contact+"' , '" + accHave + "', '" + contact + "')";
+                String query = "insert into signuptwo2 Values('"+formNo+"', '" +religion+ "' , '" + education+ "', '" + income + "', '" + occupation + "', '" + age + "', '" + qualification + "','" + acc + "' , '" + bloodGrp + "', '" + nationality + "','"+contact+"' , '" + accHave + "')";
                 c.s.executeUpdate(query);
             }
 
@@ -280,7 +275,7 @@ public class SignupTwo extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new SignupTwo();
+        new SignupTwo("");
     }
 
 }
